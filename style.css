@@ -1,0 +1,101 @@
+html, body { 
+    background-color: black;
+    margin:0; 
+    padding:0; 
+    overflow:hidden 
+            }
+
+svg { 
+    /* position:fixed; 
+    top:0; 
+    left:0;  */
+    height:700px; 
+    width:1850px;
+    }
+
+.hide{
+    background-color: rgb(255, 94, 94);
+    border-radius: 10px;
+    text-align: left;
+    position: absolute;
+    margin: 0 auto;
+    padding: 7px;
+    opacity: 80%;
+    border: 2px solid black
+}
+
+.canada-txt{
+    top: 130px;
+    left: 400px;
+}
+
+.usa-txt{
+    top: 50px;
+    left: 149px;
+}
+
+.mexico-txt{
+    top: 300px;
+    left: 320px;
+}
+
+.brazil-txt{
+    top: 470px;
+    left: 580px;
+}
+
+.uk-txt{
+    top: 127px;
+    left: 581px;
+}
+
+.niger-txt{
+    top: 370px;
+    left: 840px;
+}
+
+.italy-txt{
+    top: 43px;
+    left: 870px;
+}
+
+.russia-txt{
+    top: 100px;
+    left: 1160px;
+}
+
+.southkorea-txt{
+    top: 70px;
+    left: 1350px;
+}
+
+.japan-txt{
+    top: 225px;
+    left: 1390px;
+}
+
+.australia-txt{
+    top: 540px;
+    left: 1410px;
+}
+
+.world-txt{
+    background-color: rgb(255, 94, 94);
+    border-radius: 10px;
+    text-align: left;
+    position: absolute;
+    margin: 0 auto;
+    padding: 7px;
+    opacity: 80%;
+    border: 2px solid black;
+    top: 420px;
+    left: 73px;
+}
+
+.title-txt{
+    color: white;
+    position: absolute;
+    top: 700px;
+    left: 1000px;
+    font-size: 40px;
+}
