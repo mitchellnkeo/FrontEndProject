@@ -10,7 +10,6 @@ $.get("https://covid-19.dataflowkit.com/v1", (data) => {
 /* Hiding the inital popup boxes. */
 $(".hide").hide()
 
-
 /* Functions for each country's covid stats. Refactor to optimize code.
 
 Consider the following:
@@ -64,33 +63,29 @@ function optimizeStats(){
 
 optimizeStats()
 
+// Function for world stat block. Added more statistics on top of the one already created in optimizeStats.
+
 function worldStats(){
     const activeCases = document.createElement("p")
     const lastUpdate = document.createElement("p")
-    const newCases = document.createElement("p")
+    // const newCases = document.createElement("p")
     const newDeaths = document.createElement("p")
-    const totalCases = document.createElement("p")
-    const totalDeaths = document.createElement("p")
-    const totalRecovered = document.createElement("p")
     $.get("https://covid-19.dataflowkit.com/v1/world", (data) => {
-        activeCases.textContent = `Total Cases: ` + data["Active Cases_text"]
+        activeCases.textContent = `Active New Cases: ` + data["Active Cases_text"]
         lastUpdate.textContent = `Last Update: ` + data["Last Update"]
-        newCases.textContent = `New Cases: ` + data["New Cases_text"]
+        // newCases.textContent = `New Cases: ` + data["New Cases_text"]
         newDeaths.textContent = `New Deaths: ` + data["New Deaths_text"]
-        totalCases.textContent = `Total Cases: ` + data["Total Cases_text"]
-        totalDeaths.textContent = `Total Deaths: ` + data["Total Deaths_text"]
-        totalRecovered.textContent = `Total Recovered: ` + data["Total Recovered_text"]
 })
 let worldClass = document.querySelector(".world-txt")
 worldClass.append(activeCases)
 worldClass.append(lastUpdate)
-worldClass.append(newCases)
+// worldClass.append(newCases)
 worldClass.append(newDeaths)
-worldClass.append(totalCases)
-worldClass.append(totalDeaths)
-worldClass.append(totalRecovered)
                     }
 worldStats()
+
+// The reason for creating a new function for South Korea is due to syntax discrepencies within the functin "grabber".
+// For example, South Korea's label within the API is "s. korea", while every other country has no spacing in name. 
 
 function southkoreaStats(){
     const totalCases = document.createElement("p")
@@ -273,6 +268,8 @@ australiaStats()
 */
 
 
+// ----------------------------------------------------------------------------------------------------------------------
+
 
 // Toggle functions for all the countries.
 
@@ -287,6 +284,34 @@ australiaStats()
         mouse_is_inside = ev.type === 'mouseenter';
         });
 */
+
+function createDotListeners(){
+
+let allCountries = document.getElementsByClassName("country")
+
+for (let i = 0; i < allCountries.length; i++){
+    let eventText = allCountries[i].id
+    let loweventText = `.` + eventText.toLowerCase() + `-txt` 
+    console.log(loweventText) 
+    allCountries[i].addEventListener("mouseenter", () => {
+        $(loweventText).toggle()
+    })
+    allCountries[i].addEventListener("mouseleave", () => {
+        $(loweventText).toggle()
+    })
+  }
+}
+
+createDotListeners()
+
+/* $(".country").mouseenter(function(){
+    $(".hide").toggle()
+})
+
+$(".country").mouseleave(function(){
+    $(".hide").toggle()
+})
+
 
 $("#Canada").mouseenter(function(){
     $(".canada-txt").toggle();
@@ -375,6 +400,8 @@ $("#Australia").mouseenter(function(){
 $("#Australia").mouseleave(function(){
     $(".australia-txt").toggle();
 })
+
+*/
 
 /* 
 1. Canada -- > data[33]
