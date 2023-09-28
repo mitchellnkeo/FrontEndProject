@@ -7,7 +7,33 @@ $.get("https://covid-19.dataflowkit.com/v1", (data) => {
     )
 })
 
+
+/* Hiding the inital popup boxes. */
 $(".hide").hide()
+
+/* 
+
+Functions for each country's covid stats. Refactor to optimize code.
+
+Consider the following:
+    - You can keep the const statements, as those need to be created.
+    - The $get statement still stands to retrieve external data.
+    - You would have to look closely at the data[] lines of code as those need to be optimized.
+    - Perhaps you can do a for loop that matches the country labels in your code with the dataset provided.
+    - For example - in the dataset, it looks like countries are marked with data[Loop Variable]["Country_text"]
+    - Perhaps you can take this ["Country_text"] and convert it using toLowercase() and -txt in order to find a match
+        for a class within your html file that matches that.
+    - All country div tags within your html code have the class="country-txt" format
+    - Create a variable by querySelecting all classes within the .country-texts div class
+        - The reason for this is because all the country div tags are within the .country-texts div
+    - Loop through the html items and if they match with the variable you created for the dataset's ["Country_text"] conversion,
+        initiate the textContent process.
+    - Once you have your textContent items completed, querySelect the html item's class (".country-txt") in the document
+      and create a variable from it.
+    - Append the new textContent items to the html item's class variable you created above.
+    - MAYBE return it.
+
+*/
 
 function canadaStats(){
     const totalCases = document.createElement("p")
@@ -24,7 +50,6 @@ canadaClass.append(totalDeaths)
 canadaClass.append(totalRecovered)
                     }
 canadaStats()
-// let canadaClass = document.querySelector(".canada-txt")
 
 function usaStats(){
     const totalCases = document.createElement("p")
@@ -217,18 +242,17 @@ worldStats()
 
 
 /* 
-
-1. USA --> data[1]
-2. South Korea -- > data[6]
-3. Japan -- > data[7]
-4. Italy -- > data[8]
+1. Canada -- > data[33]
+2. USA --> data[1]
+3. Mexico -- > data[18]
+4. Brazil --> data[5]
 5. UK -- > data[9]
-6. Russia -- > data[10]
-7. Australia -- > data[13]
-8. Mexico -- > data[18]
-9. Canada -- > data[33]
-10. Nigeria --> data[108]
-11. Brazil --> data[5]
+6. Italy -- > data[8]
+7. Niger --> data[108]
+8. Russia -- > data[10]
+9. South Korea -- > data[6]
+10. Japan -- > data[7]
+11. Australia -- > data[13]
 */
 
 // Box Stats
@@ -268,6 +292,24 @@ worldStats()
 // console.log(data[country]["Total Recovered_text"])
 
 // Toggle functions for all the countries.
+
+/* Event listener functions for the country text boxes.
+   What if I created a single catch all function?
+   1) I would create a variable for all the country ELEMENTS captured via querySelector.
+   2) I would create a variable using .toLowercase() + "-txt" in conjunction with grabbing the class with querySelector.
+      I may not even have to use toLowercase() and "-txt" at all. Test these out.
+
+      Example of jQuery combining mouseenter and mouseleave:
+      $(document).on({
+        mouseenter: function () {
+          mouse_is_inside = true;
+            },
+
+        mouseleave: function () {
+          mouse_is_inside = false;
+            }
+       }, '.my-elements');
+*/
 
 $("#Canada").mouseenter(function(){
     $(".canada-txt").toggle();
