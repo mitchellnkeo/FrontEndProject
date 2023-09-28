@@ -36,7 +36,7 @@ svg {
 
 .mexico-txt{
     top: 300px;
-    left: 320px;
+    left: 340px;
 }
 
 .brazil-txt{
@@ -88,8 +88,9 @@ svg {
     padding: 7px;
     opacity: 80%;
     border: 2px solid black;
-    top: 420px;
+    top: 460px;
     left: 73px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .title-txt{

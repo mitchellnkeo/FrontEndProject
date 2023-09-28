@@ -7,13 +7,11 @@ $.get("https://covid-19.dataflowkit.com/v1", (data) => {
     )
 })
 
-
 /* Hiding the inital popup boxes. */
 $(".hide").hide()
 
-/* 
 
-Functions for each country's covid stats. Refactor to optimize code.
+/* Functions for each country's covid stats. Refactor to optimize code.
 
 Consider the following:
     - You can keep the const statements, as those need to be created.
@@ -31,11 +29,86 @@ Consider the following:
     - Once you have your textContent items completed, querySelect the html item's class (".country-txt") in the document
       and create a variable from it.
     - Append the new textContent items to the html item's class variable you created above.
-    - MAYBE return it.
+    - MAYBE return it. */
 
-*/
+function optimizeStats(){
 
-function canadaStats(){
+    $.get("https://covid-19.dataflowkit.com/v1", (data) => {
+  
+        for (let i = 0; i < data.length; i++) {
+            let totalCases = document.createElement("p")
+            let totalDeaths = document.createElement("p")
+            let totalRecovered = document.createElement("p")
+
+            let functionText = String(data[i]["Country_text"])
+            functionText = functionText.replace(/\s+/g, '')
+            let lowfunctionTest = functionText.toLowerCase() + `-txt`
+
+            totalCases.textContent = `Total Cases: ` + data[i]["Total Cases_text"]
+            totalDeaths.textContent = `Total Deaths: ` + data[i]["Total Deaths_text"]
+            totalRecovered.textContent = `Total Recovered: ` + data[i]["Total Recovered_text"] 
+                    
+            let htmlClass = document.getElementsByClassName(lowfunctionTest)
+            let htmlClassOne = htmlClass[0]         
+            
+            if (htmlClassOne === undefined){
+                continue
+            }
+
+            htmlClassOne.append(totalCases)
+            htmlClassOne.append(totalDeaths)
+            htmlClassOne.append(totalRecovered)
+     }
+  })
+}
+
+optimizeStats()
+
+function worldStats(){
+    const activeCases = document.createElement("p")
+    const lastUpdate = document.createElement("p")
+    const newCases = document.createElement("p")
+    const newDeaths = document.createElement("p")
+    const totalCases = document.createElement("p")
+    const totalDeaths = document.createElement("p")
+    const totalRecovered = document.createElement("p")
+    $.get("https://covid-19.dataflowkit.com/v1/world", (data) => {
+        activeCases.textContent = `Total Cases: ` + data["Active Cases_text"]
+        lastUpdate.textContent = `Last Update: ` + data["Last Update"]
+        newCases.textContent = `New Cases: ` + data["New Cases_text"]
+        newDeaths.textContent = `New Deaths: ` + data["New Deaths_text"]
+        totalCases.textContent = `Total Cases: ` + data["Total Cases_text"]
+        totalDeaths.textContent = `Total Deaths: ` + data["Total Deaths_text"]
+        totalRecovered.textContent = `Total Recovered: ` + data["Total Recovered_text"]
+})
+let worldClass = document.querySelector(".world-txt")
+worldClass.append(activeCases)
+worldClass.append(lastUpdate)
+worldClass.append(newCases)
+worldClass.append(newDeaths)
+worldClass.append(totalCases)
+worldClass.append(totalDeaths)
+worldClass.append(totalRecovered)
+                    }
+worldStats()
+
+function southkoreaStats(){
+    const totalCases = document.createElement("p")
+    const totalDeaths = document.createElement("p")
+    const totalRecovered = document.createElement("p")
+    $.get("https://covid-19.dataflowkit.com/v1", (data) => {
+        totalCases.textContent = `Total Cases: ` + data[6]["Total Cases_text"]
+        totalDeaths.textContent = `Total Deaths: ` + data[6]["Total Deaths_text"]
+        totalRecovered.textContent = `Total Recovered: ` + data[6]["Total Recovered_text"]
+})
+let southkoreaClass = document.querySelector(".southkorea-txt")
+southkoreaClass.append(totalCases)
+southkoreaClass.append(totalDeaths)
+southkoreaClass.append(totalRecovered)
+                    }
+southkoreaStats()
+
+/* function canadaStats(){
     const totalCases = document.createElement("p")
     const totalDeaths = document.createElement("p")
     const totalRecovered = document.createElement("p")
@@ -163,21 +236,7 @@ russiaClass.append(totalRecovered)
                     }
 russiaStats()
 
-function southkoreaStats(){
-    const totalCases = document.createElement("p")
-    const totalDeaths = document.createElement("p")
-    const totalRecovered = document.createElement("p")
-    $.get("https://covid-19.dataflowkit.com/v1", (data) => {
-        totalCases.textContent = `Total Cases: ` + data[6]["Total Cases_text"]
-        totalDeaths.textContent = `Total Deaths: ` + data[6]["Total Deaths_text"]
-        totalRecovered.textContent = `Total Recovered: ` + data[6]["Total Recovered_text"]
-})
-let southkoreaClass = document.querySelector(".southkorea-txt")
-southkoreaClass.append(totalCases)
-southkoreaClass.append(totalDeaths)
-southkoreaClass.append(totalRecovered)
-                    }
-southkoreaStats()
+
 
 function japanStats(){
     const totalCases = document.createElement("p")
@@ -211,85 +270,9 @@ australiaClass.append(totalRecovered)
                     }
 australiaStats()
 
-function worldStats(){
-    const activeCases = document.createElement("p")
-    const lastUpdate = document.createElement("p")
-    const newCases = document.createElement("p")
-    const newDeaths = document.createElement("p")
-    const totalCases = document.createElement("p")
-    const totalDeaths = document.createElement("p")
-    const totalRecovered = document.createElement("p")
-    $.get("https://covid-19.dataflowkit.com/v1/world", (data) => {
-        activeCases.textContent = `Total Cases: ` + data["Active Cases_text"]
-        lastUpdate.textContent = `Last Update: ` + data["Last Update"]
-        newCases.textContent = `New Cases: ` + data["New Cases_text"]
-        newDeaths.textContent = `New Deaths: ` + data["New Deaths_text"]
-        totalCases.textContent = `Total Cases: ` + data["Total Cases_text"]
-        totalDeaths.textContent = `Total Deaths: ` + data["Total Deaths_text"]
-        totalRecovered.textContent = `Total Recovered: ` + data["Total Recovered_text"]
-})
-let worldClass = document.querySelector(".world-txt")
-worldClass.append(activeCases)
-worldClass.append(lastUpdate)
-worldClass.append(newCases)
-worldClass.append(newDeaths)
-worldClass.append(totalCases)
-worldClass.append(totalDeaths)
-worldClass.append(totalRecovered)
-                    }
-worldStats()
-
-
-
-/* 
-1. Canada -- > data[33]
-2. USA --> data[1]
-3. Mexico -- > data[18]
-4. Brazil --> data[5]
-5. UK -- > data[9]
-6. Italy -- > data[8]
-7. Niger --> data[108]
-8. Russia -- > data[10]
-9. South Korea -- > data[6]
-10. Japan -- > data[7]
-11. Australia -- > data[13]
 */
 
-// Box Stats
-// Last Update:
-// Total Cases:
-// Total Deaths:
-// Total Recovered:
 
-// Container for world COVID stats
-
-// const container = document.createElement("container")
-// document.body.append(container)
-
-// function boxStats(){
-//     $.get("https://covid-19.dataflowkit.com/v1", (data) => {
-//         for (let country in data){
-//             let countryclassName = country.toLowerCase() + `-txt`
-//             let countryElements = document.getElementsByClassName(countryclassName)
-//             for (let i = 0; i < countryElements.length; i++) {
-//                 countryElements[i].textContent = `Total Cases: ` + data[country]["Total Cases_text"]
-                    
-//             }
-
-            
-//         }
-//     })
-// }
-
-// boxStats()
-
-// let testCountry = document.getElementsByClassName("usa-txt")
-// let testCountryParagraphs = testCountry.querySelector("p")
-// console.log(testCountryPararaphs)
-
-// console.log(data[country]["Total Cases_text"])
-// console.log(data[country]["Total Deaths_text"])
-// console.log(data[country]["Total Recovered_text"])
 
 // Toggle functions for all the countries.
 
@@ -300,15 +283,9 @@ worldStats()
       I may not even have to use toLowercase() and "-txt" at all. Test these out.
 
       Example of jQuery combining mouseenter and mouseleave:
-      $(document).on({
-        mouseenter: function () {
-          mouse_is_inside = true;
-            },
-
-        mouseleave: function () {
-          mouse_is_inside = false;
-            }
-       }, '.my-elements');
+        $(document).on('mouseenter mouseleave', '.my-elements', function (ev) {
+        mouse_is_inside = ev.type === 'mouseenter';
+        });
 */
 
 $("#Canada").mouseenter(function(){
@@ -398,3 +375,17 @@ $("#Australia").mouseenter(function(){
 $("#Australia").mouseleave(function(){
     $(".australia-txt").toggle();
 })
+
+/* 
+1. Canada -- > data[33]
+2. USA --> data[1]
+3. Mexico -- > data[18]
+4. Brazil --> data[5]
+5. UK -- > data[9]
+6. Italy -- > data[8]
+7. Niger --> data[108]
+8. Russia -- > data[10]
+9. South Korea -- > data[6]
+10. Japan -- > data[7]
+11. Australia -- > data[13]
+*/
