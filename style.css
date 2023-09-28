@@ -100,3 +100,28 @@ svg {
     left: 1000px;
     font-size: 40px;
 }
+
+.search-wrapper{
+    background-color: grey;
+    position: absolute;
+    flex-direction: column;
+    top: 110px;
+    left: 1500px;
+}
+
+.country-cards{
+    background-color: grey;
+    position: absolute;
+    top: 140px;
+    left: 1500px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: .25rem;
+    margin-top: 1rem;
+    border: 1px white;
+    padding: .5rem;
+}
+
+.vanish {
+    display: none;
+}

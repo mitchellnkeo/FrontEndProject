@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="style.css">
     <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
     <script defer src="app.js"></script>
+    <link rel="icon" href="icon-covid.png">
     <title>COVID World Map</title>
 </head>
 
@@ -181,14 +182,23 @@
     </div>
 
     <div class="world-txt">
-            <h>World COVID-19 Stats</h>
+            <h>Global COVID-19 Stats</h>
     </div>
-
     <div class="title-txt">
-        <h>COVID-19 World Tracker</h>
+        <h>COVID-19 Global Tracker</h>
     </div>
 
-
+    <div class="search-wrapper">
+        <label for="search">Search Countries</label>
+        <input type="search" id="search">
+    </div>
+    <div class="country-cards" data-country-cards-container></div>
+    <template data-country-template>
+        <div class="card">
+            <div class="header" data-header></div>
+            <div class="body" data-body></div>
+        </div>
+    </template>
 
 </body>
 

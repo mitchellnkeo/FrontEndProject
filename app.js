@@ -10,6 +10,8 @@ $.get("https://covid-19.dataflowkit.com/v1", (data) => {
 /* Hiding the inital popup boxes. */
 $(".hide").hide()
 
+// ------------------------------------------------------------------------------------------------------------- //
+
 /* Functions for each country's covid stats. Refactor to optimize code.
 
 Consider the following:
@@ -103,6 +105,8 @@ southkoreaClass.append(totalRecovered)
                     }
 southkoreaStats()
 
+
+// Previous country stat functions before code was optimized.
 /* function canadaStats(){
     const totalCases = document.createElement("p")
     const totalDeaths = document.createElement("p")
@@ -268,7 +272,7 @@ australiaStats()
 */
 
 
-// ----------------------------------------------------------------------------------------------------------------------
+// ------------------------------------------------------------------------------------------------------------- //
 
 
 // Toggle functions for all the countries.
@@ -292,7 +296,6 @@ let allCountries = document.getElementsByClassName("country")
 for (let i = 0; i < allCountries.length; i++){
     let eventText = allCountries[i].id
     let loweventText = `.` + eventText.toLowerCase() + `-txt` 
-    console.log(loweventText) 
     allCountries[i].addEventListener("mouseenter", () => {
         $(loweventText).toggle()
     })
@@ -304,6 +307,8 @@ for (let i = 0; i < allCountries.length; i++){
 
 createDotListeners()
 
+
+// Previous event listener functions before code was optimized.
 /* $(".country").mouseenter(function(){
     $(".hide").toggle()
 })
@@ -403,6 +408,25 @@ $("#Australia").mouseleave(function(){
 
 */
 
+// ------------------------------------------------------------------------------------------------------------- //
+
+// Create the Search function.
+
+const countryCardTemplate = document.querySelector("[data-country-template]")
+const countryCardContainer = document.querySelector("[data-country-cards-container]")
+
+$.get("https://covid-19.dataflowkit.com/v1", (data) => {
+    data.forEach(country => {
+   const card = countryCardTemplate.content.cloneNode(true).children[0]
+   const header = card.querySelector("[data-header]")
+   const body = card.querySelector("[data-body]") 
+   header.textContent = country["Country_text"]
+   body.textContent = `Total Cases: ` + country["Total Cases_text"]
+   countryCardContainer.append(card)
+    })
+})
+
+// List of countries and their corresponding indexes within the external provided. 
 /* 
 1. Canada -- > data[33]
 2. USA --> data[1]
