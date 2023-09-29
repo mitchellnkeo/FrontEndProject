@@ -66,7 +66,7 @@ svg {
 
 .southkorea-txt{
     top: 70px;
-    left: 1350px;
+    left: 1115px;
 }
 
 .japan-txt{
@@ -85,12 +85,16 @@ svg {
     text-align: left;
     position: absolute;
     margin: 0 auto;
-    padding: 7px;
+    padding: 10px;
     opacity: 80%;
     border: 2px solid black;
     top: 460px;
     left: 73px;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 0.90rem;
+}
+
+.world-txt >.header{
+    font-size: 1.25rem;
 }
 
 .title-txt{
@@ -102,24 +106,40 @@ svg {
 }
 
 .search-wrapper{
-    background-color: grey;
+    background-color: rgb(255, 107, 107);
+    border-radius: 10px;
     position: absolute;
     flex-direction: column;
+    padding: .5rem;
     top: 110px;
     left: 1500px;
 }
 
 .country-cards{
-    background-color: grey;
+    background-color: rgb(255, 107, 107);
     position: absolute;
     top: 140px;
-    left: 1500px;
+    left: 1550px;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    gap: .25rem;
     margin-top: 1rem;
     border: 1px white;
     padding: .5rem;
+    border-radius: 10px;
+}
+
+.card {
+    padding: .5rem;
+    border: 1px white;
+    border-radius: 10px;
+}
+
+.card >.header {
+    margin-bottom: .25rem;
+}
+
+.card >.body {
+    font-size: .8rem;
 }
 
 .vanish {

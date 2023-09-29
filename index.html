@@ -182,7 +182,7 @@
     </div>
 
     <div class="world-txt">
-            <h>Global COVID-19 Stats</h>
+            <h class="header">Global COVID-19 Stats</h>
     </div>
     <div class="title-txt">
         <h>COVID-19 Global Tracker</h>
@@ -190,11 +190,11 @@
 
     <div class="search-wrapper">
         <label for="search">Search Countries</label>
-        <input type="search" id="search">
+        <input type="search" id="search" data-search>
     </div>
     <div class="country-cards" data-country-cards-container></div>
     <template data-country-template>
-        <div class="card">
+        <div class="card vanish">
             <div class="header" data-header></div>
             <div class="body" data-body></div>
         </div>

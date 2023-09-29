@@ -414,17 +414,41 @@ $("#Australia").mouseleave(function(){
 
 const countryCardTemplate = document.querySelector("[data-country-template]")
 const countryCardContainer = document.querySelector("[data-country-cards-container]")
+const searchInput = document.querySelector("[data-search]")
+
+let countriesSearch = []
 
 $.get("https://covid-19.dataflowkit.com/v1", (data) => {
-    data.forEach(country => {
+   countriesSearch = data.map(country => {
    const card = countryCardTemplate.content.cloneNode(true).children[0]
    const header = card.querySelector("[data-header]")
    const body = card.querySelector("[data-body]") 
-   header.textContent = country["Country_text"]
+   header.textContent = country.Country_text
    body.textContent = `Total Cases: ` + country["Total Cases_text"]
    countryCardContainer.append(card)
+   return {
+    name: country.Country_text,
+    element: card }
     })
+    
+    searchInput.addEventListener("input", (e) => {
+        
+        countriesSearch.forEach(country => {
+            const value = e.target.value
+            let searchCountryName = country.name.toLowerCase()
+            const isVisible = searchCountryName.includes(value)
+            country.element.classList.toggle("vanish", !isVisible)
+            if (value === ""){
+                country.element.classList.toggle("vanish")
+            }
+        })
+        
+    })
+    
 })
+
+
+
 
 // List of countries and their corresponding indexes within the external provided. 
 /* 
