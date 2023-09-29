@@ -447,9 +447,6 @@ $.get("https://covid-19.dataflowkit.com/v1", (data) => {
     
 })
 
-
-
-
 // List of countries and their corresponding indexes within the external provided. 
 /* 
 1. Canada -- > data[33]
