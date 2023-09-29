@@ -86,15 +86,14 @@ svg {
     position: absolute;
     margin: 0 auto;
     padding: 10px;
-    opacity: 80%;
     border: 2px solid black;
-    top: 460px;
-    left: 73px;
-    font-size: 0.90rem;
+    top: 240px;
+    left: 55px;
+    font-size: 13px;
 }
 
 .world-txt >.header{
-    font-size: 1.25rem;
+    font-size: 20px;
 }
 
 .title-txt{
@@ -110,36 +109,36 @@ svg {
     border-radius: 10px;
     position: absolute;
     flex-direction: column;
-    padding: .5rem;
-    top: 110px;
-    left: 1500px;
+    padding: 10px;
+    top: 490px;
+    left: 55px;
 }
 
 .country-cards{
     background-color: rgb(255, 107, 107);
     position: absolute;
-    top: 140px;
-    left: 1550px;
+    top: 520px;
+    left: 55px;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    margin-top: 1rem;
+    margin-top: 20px;
     border: 1px white;
-    padding: .5rem;
+    padding: 10px;
     border-radius: 10px;
 }
 
 .card {
-    padding: .5rem;
+    padding: 2px;
     border: 1px white;
     border-radius: 10px;
 }
 
 .card >.header {
-    margin-bottom: .25rem;
+    margin-bottom: 5px;
 }
 
 .card >.body {
-    font-size: .8rem;
+    font-size: 13px;
 }
 
 .vanish {
